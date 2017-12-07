@@ -1,21 +1,22 @@
 #!/usr/bin/env node
 'use strict'
 const meow = require('meow')
-const path = require('path')
-const TextFixEngine = require('textlint').TextFixEngine
-const TextLintEngine = require('textlint').TextLintEngine
+const globby = require('globby')
+const textlint = require('textlint')
 const TextLintFixer = require('textlint/lib/fixer/textlint-fixer')
 
 const cli = meow(`
-    Usage
-      docslint [...files]
+  Usage
+    docslint [file|glob ...]
 
-    Options
-      --fix  Automatically fix problems
+  Options
+    --fix  Automatically fix issues
 
-    Examples
-      docslint README.md
-      docslint --fix README.md
+  Examples
+    docslint
+    docslint readme.md
+    docslint *.md !readme.md
+    docslint --fix
 `, {
   flags: {
     fix: {
@@ -24,7 +25,10 @@ const cli = meow(`
   }
 })
 
-const options = {
+const patterns = cli.input.length === 0 ? ['**/*.md'] : cli.input
+const Engine = cli.flags.fix ? textlint.TextFixEngine : textlint.TextLintEngine
+
+const engine = new Engine({
   rules: [
     'common-misspellings',
     'no-dead-link',
@@ -39,17 +43,16 @@ const options = {
     }
   },
   formatterName: 'stylish'
-}
-
-const filenames = cli.input.map(name => path.join(process.cwd(), name))
-const lintEngine = cli.flags.fix ? new TextFixEngine(options) : new TextLintEngine(options)
-
-lintEngine.executeOnFiles(filenames).then(results => {
-  const output = lintEngine.formatResults(results)
-  console.log(output)
-
-  if (cli.flags.fix) {
-    const fixer = new TextLintFixer()
-    fixer.write(results)
-  }
 })
+
+globby(patterns, {gitignore: true})
+  .then(paths => engine.executeOnFiles(paths))
+  .then(results => {
+    const output = engine.formatResults(results)
+    console.log(output)
+
+    if (cli.flags.fix) {
+      const fixer = new TextLintFixer()
+      fixer.write(results)
+    }
+  })

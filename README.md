@@ -21,11 +21,13 @@ docslint --help
     docslint [...files]
 
   Options
-    --fix  Automatically fix problems
+    --fix  Automatically fix issues
 
   Examples
-    docslint README.md
-    docslint --fix README.md
+    docslint
+    docslint readme.md
+    docslint *.md !readme.md
+    docslint --fix
 ```
 
 ## License
