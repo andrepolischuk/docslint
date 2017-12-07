@@ -10,7 +10,7 @@
     "node": ">=6"
   },
   "scripts": {
-    "test": "standard && ava && node ./cli.js",
+    "test": "standard && ava && node ./cli.js README.md",
     "postpublish": "git push --follow-tags"
   },
   "repository": {

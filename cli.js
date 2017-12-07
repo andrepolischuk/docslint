@@ -2,8 +2,9 @@
 'use strict'
 const meow = require('meow')
 const globby = require('globby')
-const textlint = require('textlint')
-const TextLintFixer = require('textlint/lib/fixer/textlint-fixer')
+const options = require('./lib/options')
+const fixFiles = require('./lib/fixFiles')
+const lintFiles = require('./lib/lintFiles')
 
 const cli = meow(`
   Usage
@@ -25,34 +26,16 @@ const cli = meow(`
   }
 })
 
+const excute = cli.flags.fix ? fixFiles : lintFiles
 const patterns = cli.input.length === 0 ? ['**/*.md'] : cli.input
-const Engine = cli.flags.fix ? textlint.TextFixEngine : textlint.TextLintEngine
-
-const engine = new Engine({
-  rules: [
-    'common-misspellings',
-    'no-dead-link',
-    'no-start-duplicated-conjunction',
-    'stop-words',
-    'write-good',
-    'terminology'
-  ],
-  rulesConfig: {
-    'write-good': {
-      passive: false
-    }
-  },
-  formatterName: 'stylish'
-})
 
 globby(patterns, {gitignore: true})
-  .then(paths => engine.executeOnFiles(paths))
-  .then(results => {
-    const output = engine.formatResults(results)
-    console.log(output)
-
-    if (cli.flags.fix) {
-      const fixer = new TextLintFixer()
-      fixer.write(results)
-    }
+  .then(paths => excute(paths, options))
+  .then(report => {
+    console.log(report.output)
+    process.exit(report.hasErrors ? 1 : 0)
+  })
+  .catch(err => {
+    console.error(err)
+    process.exit(1)
   })
