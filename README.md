@@ -2,7 +2,7 @@
 
 > Lint and fix docs simpler
 
-So under the hood `docslint` uses [`textlint`][textlint] with predefined rule set.
+Under the hood `docslint` uses [`textlint`][textlint] with predefined rule set.
 
 ## Install
 
