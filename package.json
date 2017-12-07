@@ -7,7 +7,7 @@
     "cli.js"
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "scripts": {
     "test": "standard && ava && node ./cli.js README.md",
