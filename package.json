@@ -6,6 +6,9 @@
   "files": [
     "cli.js"
   ],
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
     "test": "standard && ava && node ./cli.js README.md",
     "postpublish": "git push --follow-tags"
@@ -37,8 +40,9 @@
     "textlint-rule-write-good": "^1.6.0"
   },
   "devDependencies": {
-    "ava": "^0.18.2",
+    "ava": "^0.24.0",
     "execa": "^0.8.0",
+    "fs-extra": "^4.0.3",
     "standard": "^10.0.2"
   }
 }
