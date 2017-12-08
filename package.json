@@ -31,8 +31,12 @@
   },
   "homepage": "https://github.com/andrepolischuk/docslint#readme",
   "dependencies": {
+    "chalk": "^2.3.0",
     "globby": "^7.1.1",
+    "log-symbols": "^2.1.0",
     "meow": "^4.0.0",
+    "numd": "^3.0.4",
+    "string-width": "^2.1.1",
     "textlint": "^9.0.1",
     "textlint-rule-common-misspellings": "^1.0.1",
     "textlint-rule-no-dead-link": "^3.1.1",
