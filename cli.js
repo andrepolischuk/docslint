@@ -1,11 +1,8 @@
 #!/usr/bin/env node
 'use strict'
 const meow = require('meow')
-const globby = require('globby')
-const options = require('./lib/options')
 const format = require('./lib/formatter')
 const getErrors = require('./lib/getErrors')
-const fixFiles = require('./lib/fixFiles')
 const lintFiles = require('./lib/lintFiles')
 
 const cli = meow(`
@@ -13,13 +10,20 @@ const cli = meow(`
     docslint [file|glob ...]
 
   Options
-    --fix  Automatically fix issues
+    --fix                Automatically fix issues
+    --no-misspellings    Allow common misspellings
+    --no-stop-words      Use stop words
+    --no-terminology     Ignore terms
+    --no-dead-link       Pass all links
+    --no-write-good      Disable good writing
+    --no-capitalization  Don't check capitalization
 
   Examples
     docslint
     docslint readme.md
     docslint *.md !readme.md
     docslint --fix
+    docslint --no-stop-words
 `, {
   flags: {
     fix: {
@@ -28,11 +32,7 @@ const cli = meow(`
   }
 })
 
-const excute = cli.flags.fix ? fixFiles : lintFiles
-const patterns = cli.input.length === 0 ? ['**/*.md'] : cli.input
-
-globby(patterns, {gitignore: true})
-  .then(paths => excute(paths, options))
+lintFiles(cli.input, cli.flags)
   .then(results => {
     console.log(format(results, cli.flags))
     process.exit(getErrors(results, cli.flags) > 0 ? 1 : 0)

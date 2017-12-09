@@ -18,6 +18,17 @@ test('should lint with error', async t => {
   t.true(err.stdout.indexOf('3 fixable') > 0)
 })
 
+test('should lint with flags', async t => {
+  const err = await t.throws(execa.stdout('./cli.js', ['./fixture.md', '--no-dead-link', '--no-misspellings']))
+  t.is(err.code, 1)
+  t.true(err.stdout.indexOf('Avoid using “Currently” ') > 0)
+  t.true(err.stdout.indexOf('use “Markdown” instead') > 0)
+  t.true(err.stdout.indexOf('http://andrepolischuk.com is redirected') === -1)
+  t.true(err.stdout.indexOf('Correct it to misspelling') === -1)
+  t.true(err.stdout.indexOf('3 errors') > 0)
+  t.true(err.stdout.indexOf('1 fixable') > 0)
+})
+
 test('should fix some errors', async t => {
   await fs.copy('./fixture.md', './temp-fixture.md')
   const err = await t.throws(execa.stdout('./cli.js', ['./temp-fixture.md', '--fix']))

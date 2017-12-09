@@ -34,6 +34,7 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "globby": "^7.1.1",
+    "lodash.merge": "^4.6.0",
     "log-symbols": "^2.1.0",
     "meow": "^4.0.0",
     "numd": "^3.0.4",

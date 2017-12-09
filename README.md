@@ -18,16 +18,23 @@ docslint --help
   Lint and fix docs simpler
 
   Usage
-    docslint [...files]
+    docslint [file|glob ...]
 
   Options
-    --fix  Automatically fix issues
+    --fix                Automatically fix issues
+    --no-misspellings    Allow common misspellings
+    --no-stop-words      Use stop words
+    --no-terminology     Ignore terms
+    --no-dead-link       Pass all links
+    --no-write-good      Disable good writing
+    --no-capitalization  Don't check capitalization
 
   Examples
     docslint
     docslint readme.md
     docslint *.md !readme.md
     docslint --fix
+    docslint --no-stop-words
 ```
 
 ## License
