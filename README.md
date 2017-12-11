@@ -21,20 +21,15 @@ docslint --help
     docslint [file|glob ...]
 
   Options
-    --fix                Automatically fix issues
-    --no-misspellings    Allow common misspellings
-    --no-stop-words      Use stop words
-    --no-terminology     Ignore terms
-    --no-dead-link       Pass all links
-    --no-write-good      Disable good writing
-    --no-capitalization  Don't check capitalization
+    --fix      Automatically fix issues
+    --disable  Rules to disable, can be set multiple times
 
   Examples
     docslint
     docslint readme.md
     docslint *.md !readme.md
     docslint --fix
-    docslint --no-stop-words
+    docslint --disable stop-words
 ```
 
 ## License
