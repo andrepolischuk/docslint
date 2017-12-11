@@ -39,6 +39,7 @@ docslint --help
 * [`common-misspellings`](https://github.com/io-monad/textlint-rule-common-misspellings) — check common misspellings
 * [`apostrophe`](https://github.com/sapegin/textlint-rule-apostrophe) — check and fix correct apostrophe usage
 * [`diacritics`](https://github.com/sapegin/textlint-rule-diacritics) — check and fix the usage of diacritics
+* [`stop-words`](https://github.com/sapegin/textlint-rule-stop-words) — find filler words, buzzwords and clichés
 * [`terminology`](https://github.com/sapegin/textlint-rule-terminology) — check and fix correct terms spelling
 * [`no-dead-link`](https://github.com/nodaguti/textlint-rule-no-dead-link) — check if all links are available or not
 * [`no-start-duplicated-conjunction`](https://github.com/azu/textlint-rule-no-start-duplicated-conjunction) — check no start with duplicated conjunction
