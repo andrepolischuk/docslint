@@ -29,7 +29,7 @@ docslint --help
     docslint readme.md
     docslint *.md !readme.md
     docslint --fix
-    docslint --disable stop-words
+    docslint --disable terminology
 ```
 
 ## License

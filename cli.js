@@ -18,7 +18,7 @@ const cli = meow(`
     docslint readme.md
     docslint *.md !readme.md
     docslint --fix
-    docslint --disable stop-words
+    docslint --disable terminology
 `, {
   flags: {
     fix: {
