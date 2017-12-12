@@ -34,7 +34,7 @@ docslint --help
 
 ## Rules
 
-[Base configuration](https://github.com/andrepolischuk/docslint/blob/master/lib/createConfig.js#L19-L33) contains following rules:
+[Base configuration](https://github.com/andrepolischuk/docslint/blob/master/lib/createConfig.js#L20-L36) contains following rules:
 
 * [`common-misspellings`](https://github.com/io-monad/textlint-rule-common-misspellings) — check common misspellings
 * [`apostrophe`](https://github.com/sapegin/textlint-rule-apostrophe) — check and fix correct apostrophe usage
