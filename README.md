@@ -43,6 +43,7 @@ docslint --help
 * [`terminology`](https://github.com/sapegin/textlint-rule-terminology) — check and fix correct terms spelling
 * [`no-dead-link`](https://github.com/nodaguti/textlint-rule-no-dead-link) — check if all links are available or not
 * [`no-start-duplicated-conjunction`](https://github.com/azu/textlint-rule-no-start-duplicated-conjunction) — check no start with duplicated conjunction
+* [`real-symbols`](https://github.com/andrepolischuk/textlint-rule-real-symbols) — check and fix symbols
 * [`write-good`](https://github.com/nodaguti/textlint-rule-write-good) — naive linter for English prose for developers
 * [`en-capitalization`](https://github.com/textlint-rule/textlint-rule-en-capitalization) — check and fix capitalization
 

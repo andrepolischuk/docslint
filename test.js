@@ -14,8 +14,9 @@ test('should lint with error', async t => {
   t.true(err.stdout.indexOf('Avoid using “Currently”') > 0)
   t.true(err.stdout.indexOf('Correct it to misspelling') > 0)
   t.true(err.stdout.indexOf('use “Markdown” instead') > 0)
-  t.true(err.stdout.indexOf('5 errors') > 0)
-  t.true(err.stdout.indexOf('3 fixable') > 0)
+  t.true(err.stdout.indexOf('Use real symbols: “(c)” → “©”') > 0)
+  t.true(err.stdout.indexOf('6 errors') > 0)
+  t.true(err.stdout.indexOf('4 fixable') > 0)
 })
 
 test('should lint with flags', async t => {
@@ -25,8 +26,9 @@ test('should lint with flags', async t => {
   t.true(err.stdout.indexOf('Avoid using “Currently”') > 0)
   t.true(err.stdout.indexOf('Correct it to misspelling') > 0)
   t.true(err.stdout.indexOf('use “Markdown” instead') > 0)
-  t.true(err.stdout.indexOf('4 errors') > 0)
-  t.true(err.stdout.indexOf('2 fixable') > 0)
+  t.true(err.stdout.indexOf('Use real symbols: “(c)” → “©”') > 0)
+  t.true(err.stdout.indexOf('5 errors') > 0)
+  t.true(err.stdout.indexOf('3 fixable') > 0)
 })
 
 test('should fix some errors', async t => {
@@ -36,7 +38,8 @@ test('should fix some errors', async t => {
   t.true(err.stdout.indexOf('Avoid using “Currently”') > 0)
   t.true(err.stdout.indexOf('Correct it to misspelling') > 0)
   t.true(err.stdout.indexOf('use “Markdown” instead') > 0)
+  t.true(err.stdout.indexOf('Use real symbols: “(c)” → “©”') > 0)
   t.true(err.stdout.indexOf('2 errors') > 0)
-  t.true(err.stdout.indexOf('3 issues are fixed') > 0)
+  t.true(err.stdout.indexOf('4 issues are fixed') > 0)
   await fs.remove('./temp-fixture.md')
 })
