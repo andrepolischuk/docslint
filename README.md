@@ -4,6 +4,8 @@
 
 Under the hood `docslint` uses [`textlint`][textlint] with predefined rule set. It’s a simple zero-config tool that works out of the box like [`standard`][standard] and [`xo`][xo].
 
+![](screenshot.png)
+
 ## Install
 
 ```sh
